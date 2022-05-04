@@ -2,7 +2,8 @@ from media import Media
 from desviacion_tipica import Desviacion_tipica
 from classes import Filas, Columnas, Maximos, Minimos, Mediana, Moda, Q1, Q3
 import pandas as pd
-from grafico import Grafico_barras, Grafico_histograma, Grafico_sectores
+
+import matplotlib.pyplot as plt
 
 pokemon = pd.read_csv("pokemon_stats (1).csv")
 
@@ -74,5 +75,16 @@ print("El rango intercuartilico es {}".format(rango_int))
 
 #grafico histograma
 
-grafico = Grafico_histograma(naranjas, "Peso Naranjas")
-grafico.crear_grafico()
+#grafico = Grafico_histograma(naranjas, "Peso Naranjas")
+#grafico.crear_grafico()
+
+def grafico(dataset, tipo_grafico):
+  fig, ax = plt.subplots()
+  dataset.plot(kind=tipo_grafico, ax = ax)
+  ax.set_title('Grafico', loc = "center", fontdict = {'fontsize':14, 'fontweight':'bold', 'color':'tab:blue'})
+  ax.set_ylabel('')
+  plt.savefig('graficos/grafico' + '-'.join(tipo_grafico) + '.png', bbox_inches='tight')
+
+grafico(naranjas["Peso Naranjas"], "pie")
+grafico(naranjas["Peso Naranjas"], "bar")
+grafico(naranjas["Peso Naranjas"], "hist")

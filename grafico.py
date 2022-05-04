@@ -85,6 +85,6 @@ class Grafico_histograma:
     self.csv[self.columna].plot(kind="hist", ax=ax)
     ax.set_title("histograma", loc = "center", fontdict = {'fontsize':14, 'fontweight':'bold', 'color':'tab:blue'})
     ax.set_ylabel('')
-    #plt.savefig('img/histograma-' + '-'.join(self.columna) + '.png', bbox_inches='tight')
+    plt.savefig('img/histograma-', bbox_inches='tight')
     return
     
