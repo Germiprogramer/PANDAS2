@@ -80,11 +80,17 @@ print("El rango intercuartilico es {}".format(rango_int))
 
 def grafico(dataset, tipo_grafico):
   fig, ax = plt.subplots()
-  dataset.plot(kind=tipo_grafico, ax = ax)
-  ax.set_title('Grafico', loc = "center", fontdict = {'fontsize':14, 'fontweight':'bold', 'color':'tab:blue'})
+  if tipo_grafico=="dispersion":
+    ax.scatter(naranjas["id"], naranjas["Pesas"])
+  else:
+    dataset.plot(kind=tipo_grafico, ax = ax)
+  ax.set_title('Grafico muy solido', loc = "center", fontdict = {'fontsize':14, 'fontweight':'bold', 'color':'tab:blue'})
   ax.set_ylabel('')
-  plt.savefig('graficos/grafico' + '-'.join(tipo_grafico) + '.png', bbox_inches='tight')
+  plt.show()
+
+  plt.savefig('graficos/grafico' + '.png', bbox_inches='tight')
 
 grafico(naranjas["Peso Naranjas"], "pie")
 grafico(naranjas["Peso Naranjas"], "bar")
 grafico(naranjas["Peso Naranjas"], "hist")
+
